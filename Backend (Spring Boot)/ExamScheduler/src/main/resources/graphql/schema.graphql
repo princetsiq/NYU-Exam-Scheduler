@@ -1,0 +1,74 @@
+type Query {
+    getUser(userId: Int!): User
+    getUsers: [User]
+    getExam(examIdInput: ExamIdInput!): Exam
+    getExams: [Exam]
+    searchExams(searchInput: String!): [Exam]
+    getMultipleExams(examNames: [String]!): [Exam]
+    getBookmarksByUserId(userId: ID!): [Bookmark]
+    searchBookmarks(searchInput: String!): [Bookmark]
+}
+
+type Mutation {
+    createUser(firstName: String!, lastName: String!, email: String!, password: String!): User
+    loginUser(email: String!, password: String!): UserResponse
+    createExam(examIdInput: ExamIdInput!, classNumber: Int!, courseTitle: String!, professorName: String!,
+        examWeekday: String!, examDate: String!, startTime: String!, endTime: String!, location: String!): Exam
+    createBookmark(userId: ID!, examIdInput: ExamIdInput!): Bookmark
+    updateUser(userId: ID!, firstName: String, lastName: String, email: String, password: String): Boolean
+    updateExam(courseName: String!, courseSection: String!, classNumber: Int, courseTitle: String,
+        professorName: String, examWeekday: String, examDate: String, startTime: String, endTime: String,
+        location: String): Boolean
+    deleteUser(userId: ID!): Boolean
+    deleteExam(examIdInput: ExamIdInput!): Boolean
+    deleteBookmark(bookmarkId: ID!): Boolean
+}
+
+type UserResponse {
+    token: String
+    user: User
+}
+
+type User {
+    userId: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+}
+
+type ExamId {
+    courseName: String!
+    courseSection: String!
+}
+
+type Exam {
+    examId: ExamId!
+    classNumber: Int!
+    courseTitle: String!
+    professorName: String!
+    examWeekday: String!
+    examDate: String!
+    startTime: String!
+    endTime: String!
+    location: String!
+}
+
+type Bookmark {
+    bookmarkId: ID!
+    user: User!
+    exam: Exam!
+}
+
+input UserInput {
+    userId: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+}
+
+input ExamIdInput {
+    courseName: String!
+    courseSection: String!
+}
