@@ -52,7 +52,7 @@ public class UserService {
     private String generateToken(String email) {
         return JWT.create()
                 .withSubject(email)
-                .withExpiresAt(new Date(System.currentTimeMillis() + 864_000_000)) // 10 days
+                .withExpiresAt(new Date(System.currentTimeMillis() + 864_000_000))
                 .sign(Algorithm.HMAC512(secret.getBytes()));
     }
 
