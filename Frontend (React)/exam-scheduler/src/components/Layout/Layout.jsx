@@ -13,6 +13,7 @@ const Layout = () => {
   return (
     <div className="App">
       <Navbar onSidebarToggle={handleSidebarToggle} />
+      {/* <div className="page" style={{ width: `calc(100% - ${sidebarWidth}px)` }}> */}
       <div className="page" style={{ marginLeft: `${sidebarWidth}px`, width: `calc(100% - ${sidebarWidth}px)` }}>
         <Outlet />
       </div>

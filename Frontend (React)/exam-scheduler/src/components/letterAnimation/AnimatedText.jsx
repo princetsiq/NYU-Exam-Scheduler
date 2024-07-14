@@ -1,14 +1,15 @@
 import React from 'react';
+import './AnimatedText.scss'
 
-const AnimatedText = ({ text }) => {
+const AnimatedText = ({ letterClass, strArray, idx }) => {
   return (
-    <div>
-      {text.split('').map((char, index) => (
-        <span key={index} className={`char char-${index}`}>
+    <span>
+      {strArray.map((char, i) => (
+        <span key={i} className={`${letterClass} _${i + idx}`}>
           {char}
         </span>
       ))}
-    </div>
+    </span>
   );
 };
 
