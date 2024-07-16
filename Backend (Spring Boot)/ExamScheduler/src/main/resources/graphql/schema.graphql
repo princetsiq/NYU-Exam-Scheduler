@@ -12,6 +12,7 @@ type Query {
 type Mutation {
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): User
     loginUser(email: String!, password: String!): UserResponse
+    logoutUser: Boolean
     createExam(examIdInput: ExamIdInput!, classNumber: Int!, courseTitle: String!, professorName: String!,
         examWeekday: String!, examDate: String!, startTime: String!, endTime: String!, location: String!): Exam
     createBookmark(userId: ID!, examIdInput: ExamIdInput!): Bookmark

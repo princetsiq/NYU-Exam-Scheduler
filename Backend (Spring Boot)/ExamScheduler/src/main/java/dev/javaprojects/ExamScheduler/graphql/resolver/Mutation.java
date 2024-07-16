@@ -8,6 +8,8 @@ import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
@@ -28,6 +30,16 @@ public class Mutation implements GraphQLMutationResolver {
     @MutationMapping
     public UserResponse loginUser(@Argument @NotNull String email, @Argument @NotNull String password) {
         return userService.loginUser(email, password);
+    }
+
+    @MutationMapping
+    public boolean logoutUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            SecurityContextHolder.getContext().setAuthentication(null);
+            return true;
+        }
+        return false;
     }
 
     @MutationMapping
