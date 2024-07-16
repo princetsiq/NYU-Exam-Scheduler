@@ -42,7 +42,7 @@ export const GET_EXAM = gql`
 `;
 
 export const GET_EXAMS = gql`
-  query GetExams {
+  query getExams {
     getExams {
       examId {
         courseName
@@ -61,7 +61,7 @@ export const GET_EXAMS = gql`
 `;
 
 export const SEARCH_EXAMS = gql`
-  query SearchExams($searchInput: String!) {
+  query searchExams($searchInput: String!) {
     searchExams(searchInput: $searchInput) {
       examId {
         courseName
@@ -80,7 +80,7 @@ export const SEARCH_EXAMS = gql`
 `;
 
 export const GET_MULTIPLE_EXAMS = gql`
-  query GetMultipleExams($examNames: [String]!) {
+  query getMultipleExams($examNames: [String]!) {
     getMultipleExams(examNames: $examNames) {
       examId {
         courseName
@@ -99,7 +99,7 @@ export const GET_MULTIPLE_EXAMS = gql`
 `;
 
 export const GET_BOOKMARKS_BY_USER_ID = gql`
-  query GetBookmarksByUserId($userId: ID!) {
+  query getBookmarksByUserId($userId: ID!) {
     getBookmarksByUserId(userId: $userId) {
       bookmarkId
       user {
@@ -120,7 +120,7 @@ export const GET_BOOKMARKS_BY_USER_ID = gql`
 `;
 
 export const SEARCH_BOOKMARKS = gql`
-  query SearchBookmarks($searchInput: String!) {
+  query searchBookmarks($searchInput: String!) {
     searchBookmarks(searchInput: $searchInput) {
       bookmarkId
       user {
